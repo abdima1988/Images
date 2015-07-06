@@ -11,10 +11,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ListView;
 
-import com.nostra13.universalimageloader.core.DisplayImageOptions;
-import com.nostra13.universalimageloader.core.ImageLoader;
-import com.nostra13.universalimageloader.core.ImageLoaderConfiguration;
-
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -56,13 +52,13 @@ public class ImagesFragment extends Fragment {
             "http://developer.android.com/auto/images/logos/auto/suzuki.png",
             "http://developer.android.com/auto/images/logos/auto/volkswagen.png",
             "http://developer.android.com/auto/images/logos/auto/volvo.png",
-            "http://upload.wikimedia.org/wikipedia/commons/6/66/Big_size_chess_6759_CRI_08_2009_Langosta_Beach.jpg"
+            "http://upload.wikimedia.org/wikipedia/commons/6/66/Big_size_chess_6759_CRI_08_2009_Langosta_Beach.jpg",
+            "https://upload.wikimedia.org/wikipedia/commons/5/53/Wikipedia-logo-en-big.png"
     };
 
     private List<String> listUris;
 
     private ImageAdapter mImageAdapter;
-    private DisplayImageOptions displayImageOptions = null;
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
@@ -92,10 +88,10 @@ public class ImagesFragment extends Fragment {
                 listUris.addAll(Arrays.asList(uris));
                 break;
             case R.id.action_clear_memory_cache:
-                ImageLoader.getInstance().clearMemoryCache();
+
                 break;
             case R.id.action_clear_disk_cache:
-                ImageLoader.getInstance().clearDiskCache();
+
                 break;
             default:
                 break;
@@ -107,81 +103,13 @@ public class ImagesFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 
-        if (!ImageLoader.getInstance().isInited()) {
-            ImageLoader.getInstance().init(getImageLoaderConfiguration());
-        }
-
         View rootView = inflater.inflate(R.layout.fragment_images, container, false);
-        mImageAdapter = new ImageAdapter(getActivity(), listUris);
+        mImageAdapter = new ImageAdapter(getActivity().getApplicationContext(), listUris);
 //                new ArrayAdapter<>(getActivity(), R.layout.list_item_text, R.id.list_item_text, urls);
         ListView listView = (ListView) rootView.findViewById(R.id.listview_images);
         listView.setAdapter(mImageAdapter);
 
         return rootView;
     }
-    /**
-     File cacheDir = StorageUtils.getCacheDirectory(context);
-     ImageLoaderConfiguration config = new ImageLoaderConfiguration.Builder(context)
-     .memoryCacheExtraOptions(480, 800) // default = device screen dimensions
-     .diskCacheExtraOptions(480, 800, null)
-     .taskExecutor(...)
-     .taskExecutorForCachedImages(...)
-     .threadPoolSize(3) // default
-     .threadPriority(Thread.NORM_PRIORITY - 2) // default
-     .tasksProcessingOrder(QueueProcessingType.FIFO) // default
-     .denyCacheImageMultipleSizesInMemory()
-     .memoryCache(new LruMemoryCache(2 * 1024 * 1024))
-     .memoryCacheSize(2 * 1024 * 1024)
-     .memoryCacheSizePercentage(13) // default
-     .diskCache(new UnlimitedDiscCache(cacheDir)) // default
-     .diskCacheSize(50 * 1024 * 1024)
-     .diskCacheFileCount(100)
-     .diskCacheFileNameGenerator(new HashCodeFileNameGenerator()) // default
-     .imageDownloader(new BaseImageDownloader(context)) // default
-     .imageDecoder(new BaseImageDecoder()) // default
-     .defaultDisplayImageOptions(DisplayImageOptions.createSimple()) // default
-     .writeDebugLogs()
-     .build();
-     **/
-    public ImageLoaderConfiguration getImageLoaderConfiguration() {
-        ImageLoaderConfiguration imageLoaderConfiguration;
-        // default conf
-//        imageLoaderConfiguration = ImageLoaderConfiguration.createDefault(getActivity().getApplicationContext());
-        imageLoaderConfiguration = new ImageLoaderConfiguration.Builder(getActivity().getApplicationContext())
-                .defaultDisplayImageOptions(getDisplayImageOptions())
-                .writeDebugLogs()
-                .build();
 
-        return imageLoaderConfiguration;
-    }
-
-    /**
-     DisplayImageOptions options = new DisplayImageOptions.Builder()
-     .showImageOnLoading(R.drawable.ic_stub) // resource or drawable
-     .showImageForEmptyUri(R.drawable.ic_empty) // resource or drawable
-     .showImageOnFail(R.drawable.ic_error) // resource or drawable
-     .resetViewBeforeLoading(false)  // default
-     .delayBeforeLoading(1000)
-     .cacheInMemory(false) // default
-     .cacheOnDisk(false) // default
-     .preProcessor(...)
-     .postProcessor(...)
-     .extraForDownloader(...)
-     .considerExifParams(false) // default
-     .imageScaleType(ImageScaleType.IN_SAMPLE_POWER_OF_2) // default
-     .bitmapConfig(Bitmap.Config.ARGB_8888) // default
-     .decodingOptions(...)
-     .displayer(new SimpleBitmapDisplayer()) // default
-     .handler(new Handler()) // default
-     .build();
-     **/
-    public DisplayImageOptions getDisplayImageOptions() {
-        DisplayImageOptions displayImageOptions = null;
-        displayImageOptions = new DisplayImageOptions.Builder()
-//                .showImageOnLoading(R.drawable.empty)
-                .cacheInMemory(true)
-                .cacheOnDisk(true)
-                .build();
-        return displayImageOptions;
-    }
 }

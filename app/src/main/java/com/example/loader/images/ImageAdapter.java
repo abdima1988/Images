@@ -7,7 +7,7 @@ import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.ImageView;
 
-import com.nostra13.universalimageloader.core.ImageLoader;
+import com.squareup.picasso.Picasso;
 
 import java.util.List;
 
@@ -16,12 +16,13 @@ import java.util.List;
  */
 public class ImageAdapter extends BaseAdapter {
 
-
+    private Context context;
     private LayoutInflater inflater;
     private List<String> uris;
 
     public ImageAdapter(Context context, List<String> uris) {
         inflater = LayoutInflater.from(context);
+        this.context = context;
         this.uris = uris;
 //        options = ImageLoaderConfiguration.defaultDisplayImageOptions();
 //        options = new DisplayImageOptions.Builder()
@@ -60,7 +61,11 @@ public class ImageAdapter extends BaseAdapter {
         } else {
             image = (ImageView) view.getTag();
         }
-        ImageLoader.getInstance().displayImage(uris.get(position), image);
+        Picasso.with(context)
+                .load(uris.get(position))
+                .into(image);
+//        ImageLoader.getInstance().displayImage(uris.get(position), image);
+
 
         return view;
     }
