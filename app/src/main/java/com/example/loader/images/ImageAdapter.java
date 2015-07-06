@@ -24,15 +24,6 @@ public class ImageAdapter extends BaseAdapter {
         inflater = LayoutInflater.from(context);
         this.context = context;
         this.uris = uris;
-//        options = ImageLoaderConfiguration.defaultDisplayImageOptions();
-//        options = new DisplayImageOptions.Builder()
-//                .showImageOnLoading(R.drawable.ic_stub)
-//                .showImageForEmptyUri(R.drawable.ic_empty)
-//                .showImageOnFail(R.drawable.ic_error)
-//                .cacheInMemory(true)
-//                .cacheOnDisk(true)
-//                .considerExifParams(true)
-//                .displayer(new RoundedBitmapDisplayer(20)).build();
     }
 
     @Override
@@ -64,9 +55,6 @@ public class ImageAdapter extends BaseAdapter {
         Picasso.with(context)
                 .load(uris.get(position))
                 .into(image);
-//        ImageLoader.getInstance().displayImage(uris.get(position), image);
-
-
         return view;
     }
 }
