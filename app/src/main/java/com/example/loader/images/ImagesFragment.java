@@ -1,5 +1,7 @@
 package com.example.loader.images;
 
+import android.app.ActivityManager;
+import android.content.Context;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -11,6 +13,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ListView;
 
+import com.nostra13.universalimageloader.cache.memory.impl.UsingFreqLimitedMemoryCache;
 import com.nostra13.universalimageloader.core.DisplayImageOptions;
 import com.nostra13.universalimageloader.core.ImageLoader;
 import com.nostra13.universalimageloader.core.ImageLoaderConfiguration;
@@ -147,7 +150,14 @@ public class ImagesFragment extends Fragment {
         ImageLoaderConfiguration imageLoaderConfiguration;
         // default conf
 //        imageLoaderConfiguration = ImageLoaderConfiguration.createDefault(getActivity().getApplicationContext());
+        ActivityManager am = (ActivityManager) getActivity().getSystemService(Context.ACTIVITY_SERVICE);
+        int memClass = am.getMemoryClass();
+        final int memoryCacheSize = 1024 * 1024 * memClass / 8;
+
         imageLoaderConfiguration = new ImageLoaderConfiguration.Builder(getActivity().getApplicationContext())
+                .memoryCache(new UsingFreqLimitedMemoryCache(memoryCacheSize)) // 2 Mb
+//                .imageDownloader(new BaseImageDownloader(getActivity().getApplicationContext(), 5 * 1000, 30 * 1000))
+                .denyCacheImageMultipleSizesInMemory()
                 .defaultDisplayImageOptions(getDisplayImageOptions())
                 .writeDebugLogs()
                 .build();
