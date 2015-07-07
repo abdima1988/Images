@@ -101,7 +101,7 @@ public class ImagesFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 
         View rootView = inflater.inflate(R.layout.fragment_images, container, false);
-        mImageAdapter = new ImageAdapter(getActivity(), listUris);
+        mImageAdapter = new ImageAdapter(getActivity().getApplicationContext(), listUris);
 //                new ArrayAdapter<>(getActivity(), R.layout.list_item_text, R.id.list_item_text, urls);
         ListView listView = (ListView) rootView.findViewById(R.id.listview_images);
         listView.setAdapter(mImageAdapter);
