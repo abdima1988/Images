@@ -14,22 +14,14 @@ import java.util.List;
  */
 public class ImageAdapter extends BaseAdapter {
 
-
+    private Context context;
     private LayoutInflater inflater;
     private List<String> uris;
 
     public ImageAdapter(Context context, List<String> uris) {
         inflater = LayoutInflater.from(context);
+        this.context = context;
         this.uris = uris;
-//        options = ImageLoaderConfiguration.defaultDisplayImageOptions();
-//        options = new DisplayImageOptions.Builder()
-//                .showImageOnLoading(R.drawable.ic_stub)
-//                .showImageForEmptyUri(R.drawable.ic_empty)
-//                .showImageOnFail(R.drawable.ic_error)
-//                .cacheInMemory(true)
-//                .cacheOnDisk(true)
-//                .considerExifParams(true)
-//                .displayer(new RoundedBitmapDisplayer(20)).build();
     }
 
     @Override
