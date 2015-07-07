@@ -13,6 +13,7 @@ import android.view.ViewGroup;
 import android.widget.ListView;
 
 import com.squareup.picasso.LruCache;
+import com.squareup.picasso.OkHttpDownloader;
 import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
@@ -26,6 +27,10 @@ import java.util.List;
 public class ImagesFragment extends Fragment {
 
     private static final String LOG_TAG = ImagesFragment.class.getSimpleName();
+
+    private static final int LRU_CACHE_SIZE = 1024*1024*5;
+    private static final long DISK_CACHE_SIZE = 1024*1024*5L;
+
 
     private final String[] uris = {
             "http://developer.android.com/auto/images/logos/auto/abarth.png",
@@ -114,7 +119,9 @@ public class ImagesFragment extends Fragment {
         listView.setAdapter(mImageAdapter);
 
         Picasso instance = new Picasso.Builder(getActivity())
-                .memoryCache(new LruCache(getActivity().getApplicationContext()))
+                .memoryCache(new LruCache(LRU_CACHE_SIZE))
+                .indicatorsEnabled(true)
+                .downloader(new OkHttpDownloader(getActivity().getApplicationContext(), DISK_CACHE_SIZE))
                 .loggingEnabled(true)
                 .build();
         try {

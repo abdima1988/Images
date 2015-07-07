@@ -54,6 +54,7 @@ public class ImageAdapter extends BaseAdapter {
         }
         Picasso.with(context)
                 .load(uris.get(position))
+//                .resize(500, 500)
                 .into(image);
         return view;
     }
