@@ -7,8 +7,6 @@ import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.ImageView;
 
-import com.nostra13.universalimageloader.core.ImageLoader;
-
 import java.util.List;
 
 /**
@@ -60,7 +58,7 @@ public class ImageAdapter extends BaseAdapter {
         } else {
             image = (ImageView) view.getTag();
         }
-        ImageLoader.getInstance().displayImage(uris.get(position), image);
+        //TODO load image
 
         return view;
     }
