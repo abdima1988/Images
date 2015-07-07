@@ -1,11 +1,18 @@
 package com.example.loader.images;
 
 import android.content.Context;
+import android.content.res.Resources;
+import android.net.Uri;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.ImageView;
+
+import com.facebook.drawee.drawable.ProgressBarDrawable;
+import com.facebook.drawee.generic.GenericDraweeHierarchy;
+import com.facebook.drawee.generic.GenericDraweeHierarchyBuilder;
+import com.facebook.drawee.view.SimpleDraweeView;
 
 import java.util.List;
 
@@ -42,15 +49,24 @@ public class ImageAdapter extends BaseAdapter {
     @Override
     public View getView(final int position, View convertView, ViewGroup parent) {
         View view = convertView;
-        ImageView image;
+        SimpleDraweeView image;
         if (convertView == null) {
-            view = inflater.inflate(R.layout.list_item_image, parent, false);
-            image = (ImageView) view.findViewById(R.id.list_item_image);
+            view = inflater.inflate(R.layout.list_item_drawee, parent, false);
+            image = (SimpleDraweeView) view.findViewById(R.id.list_item_drawee_image);
             view.setTag(image);
         } else {
-            image = (ImageView) view.getTag();
+            image = (SimpleDraweeView) view.getTag();
         }
         //TODO load image
+        GenericDraweeHierarchyBuilder builder =
+                new GenericDraweeHierarchyBuilder(context.getResources());
+        GenericDraweeHierarchy hierarchy = builder
+                .setFadeDuration(50)
+//                .setProgressBarImage(new ProgressBarDrawable())
+                .build();
+        image.setHierarchy(hierarchy);
+
+        image.setImageURI(Uri.parse(uris.get(position)));
 
         return view;
     }
