@@ -12,8 +12,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ListView;
 
-import com.squareup.picasso.LruCache;
-import com.squareup.picasso.OkHttpDownloader;
 import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
@@ -119,9 +117,9 @@ public class ImagesFragment extends Fragment {
         listView.setAdapter(mImageAdapter);
 
         Picasso instance = new Picasso.Builder(getActivity())
-                .memoryCache(new LruCache(LRU_CACHE_SIZE))
+//                .memoryCache(new LruCache(LRU_CACHE_SIZE))
                 .indicatorsEnabled(true)
-                .downloader(new OkHttpDownloader(getActivity().getApplicationContext(), DISK_CACHE_SIZE))
+//                .downloader(new OkHttpDownloader(getActivity().getApplicationContext(), DISK_CACHE_SIZE))
                 .loggingEnabled(true)
                 .build();
         try {
