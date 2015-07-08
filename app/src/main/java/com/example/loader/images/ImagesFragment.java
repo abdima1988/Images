@@ -21,7 +21,7 @@ import java.util.List;
 
 public class ImagesFragment extends Fragment {
 
-    private final String[] uris = {
+    private final String[] uris_1 = {
             "http://developer.android.com/auto/images/logos/auto/abarth.png",
             "http://developer.android.com/auto/images/logos/auto/acura.png",
             "http://developer.android.com/auto/images/logos/auto/alpharomeo.png",
@@ -53,6 +53,72 @@ public class ImagesFragment extends Fragment {
             "http://upload.wikimedia.org/wikipedia/commons/6/66/Big_size_chess_6759_CRI_08_2009_Langosta_Beach.jpg"
     };
 
+    private final String[] uris = {
+            "http://developer.android.com/auto/images/logos/auto/abarth.png",
+            "http://developer.android.com/auto/images/logos/auto/acura.png",
+            "http://developer.android.com/auto/images/logos/auto/alpharomeo.png",
+            "http://developer.android.com/auto/images/logos/auto/audi.png",
+            "http://developer.android.com/auto/images/logos/auto/abarth.png",
+            "http://developer.android.com/auto/images/logos/auto/acura.png",
+            "http://developer.android.com/auto/images/logos/auto/alpharomeo.png",
+            "http://developer.android.com/auto/images/logos/auto/audi.png",
+            "http://developer.android.com/auto/images/logos/auto/abarth.png",
+            "http://developer.android.com/auto/images/logos/auto/acura.png",
+            "http://developer.android.com/auto/images/logos/auto/alpharomeo.png",
+            "http://developer.android.com/auto/images/logos/auto/audi.png",
+            "http://developer.android.com/auto/images/logos/auto/abarth.png",
+            "http://developer.android.com/auto/images/logos/auto/acura.png",
+            "http://developer.android.com/auto/images/logos/auto/alpharomeo.png",
+            "http://developer.android.com/auto/images/logos/auto/audi.png",
+            "http://developer.android.com/auto/images/logos/auto/abarth.png",
+            "http://developer.android.com/auto/images/logos/auto/acura.png",
+            "http://developer.android.com/auto/images/logos/auto/alpharomeo.png",
+            "http://developer.android.com/auto/images/logos/auto/audi.png",
+            "http://developer.android.com/auto/images/logos/auto/abarth.png",
+            "http://developer.android.com/auto/images/logos/auto/acura.png",
+            "http://developer.android.com/auto/images/logos/auto/alpharomeo.png",
+            "http://developer.android.com/auto/images/logos/auto/audi.png",
+            "http://developer.android.com/auto/images/logos/auto/abarth.png",
+            "http://developer.android.com/auto/images/logos/auto/acura.png",
+            "http://developer.android.com/auto/images/logos/auto/alpharomeo.png",
+            "http://developer.android.com/auto/images/logos/auto/audi.png",
+            "http://developer.android.com/auto/images/logos/auto/abarth.png",
+            "http://developer.android.com/auto/images/logos/auto/acura.png",
+            "http://developer.android.com/auto/images/logos/auto/alpharomeo.png",
+            "http://developer.android.com/auto/images/logos/auto/audi.png",
+            "http://developer.android.com/auto/images/logos/auto/abarth.png",
+            "http://developer.android.com/auto/images/logos/auto/acura.png",
+            "http://developer.android.com/auto/images/logos/auto/alpharomeo.png",
+            "http://developer.android.com/auto/images/logos/auto/audi.png",
+            "http://developer.android.com/auto/images/logos/auto/abarth.png",
+            "http://developer.android.com/auto/images/logos/auto/acura.png",
+            "http://developer.android.com/auto/images/logos/auto/alpharomeo.png",
+            "http://developer.android.com/auto/images/logos/auto/audi.png",
+            "http://developer.android.com/auto/images/logos/auto/abarth.png",
+            "http://developer.android.com/auto/images/logos/auto/acura.png",
+            "http://developer.android.com/auto/images/logos/auto/alpharomeo.png",
+            "http://developer.android.com/auto/images/logos/auto/audi.png",
+            "http://developer.android.com/auto/images/logos/auto/abarth.png",
+            "http://developer.android.com/auto/images/logos/auto/acura.png",
+            "http://developer.android.com/auto/images/logos/auto/alpharomeo.png",
+            "http://developer.android.com/auto/images/logos/auto/audi.png",
+            "http://developer.android.com/auto/images/logos/auto/abarth.png",
+            "http://developer.android.com/auto/images/logos/auto/acura.png",
+            "http://developer.android.com/auto/images/logos/auto/alpharomeo.png",
+            "http://developer.android.com/auto/images/logos/auto/audi.png",
+            "http://developer.android.com/auto/images/logos/auto/abarth.png",
+            "http://developer.android.com/auto/images/logos/auto/acura.png",
+            "http://developer.android.com/auto/images/logos/auto/alpharomeo.png",
+            "http://developer.android.com/auto/images/logos/auto/audi.png",
+            "http://developer.android.com/auto/images/logos/auto/abarth.png",
+            "http://developer.android.com/auto/images/logos/auto/acura.png",
+            "http://developer.android.com/auto/images/logos/auto/alpharomeo.png",
+            "http://developer.android.com/auto/images/logos/auto/audi.png",
+            "http://developer.android.com/auto/images/logos/auto/abarth.png",
+            "http://developer.android.com/auto/images/logos/auto/acura.png",
+            "http://developer.android.com/auto/images/logos/auto/alpharomeo.png",
+            "http://developer.android.com/auto/images/logos/auto/audi.png"
+    };
     private List<String> listUris;
     private ImageAdapter mImageAdapter;
 
